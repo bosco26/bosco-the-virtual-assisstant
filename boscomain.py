@@ -5,8 +5,10 @@ import speech_recognition as sr
 import random 
 from random import choice
 import time
+import sys
+import pyjokes
 
-
+sys.path.append('/usr/local/lib/python3.9.7/dist-packages/')
 sr.__version__
 '3.8.1'
 
@@ -37,7 +39,17 @@ def game():
     time.sleep(0.5)
     speak(random.choice(rps))
 
+def coin():
+    Coin = ('Heads','Tails')
+    speak(random.choice(Coin))
     
+def dice():
+    Coin = ('1','2','3','4','5','6')
+    speak(random.choice(dice))
+    
+def jokes():
+    speak(pyjokes.get_joke())
+
     
 #######################################################################
 def get_audio(): #capture sound
@@ -51,13 +63,13 @@ def get_audio(): #capture sound
     try:
         print("Recongnizning...")
         r = sr.Recognizer()
-        text = r.recognize_google(audio, language='en-in')
+        text = r.recognize_google(audio, language='en-in').lower()
         print(text)
 
     except Exception as e:
         print(e)
         #speak("Say that again please...")
-        return "None"
+        return "None"   
     return text
 get_audio()
 
@@ -80,4 +92,12 @@ if __name__ == '__main__': #!works but slow
                 elif 'game' in command:
                     game()
                 
-
+                elif 'coin flip' in command:
+                    coin()
+                    
+                elif 'dice' in command:
+                    dice()
+                elif 'version' in command:
+                    speak('alpha_1')
+                elif 'joke' in command:
+                    jokes()
