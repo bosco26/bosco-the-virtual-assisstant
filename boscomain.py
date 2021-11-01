@@ -1,12 +1,12 @@
 from typing import Text
-import pyttsx3
+import pyttsx3 #pip install pyttsxe
 import datetime
-import speech_recognition as sr 
+import speech_recognition as sr #pip install py audio #pip install SpeechRecognition
 import random 
 from random import choice
 import time
 import sys
-import pyjokes
+import pyjokes #pip install pyjokes
 
 sys.path.append('/usr/local/lib/python3.9.7/dist-packages/')
 sr.__version__
